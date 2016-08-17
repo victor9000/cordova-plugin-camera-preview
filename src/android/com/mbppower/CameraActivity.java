@@ -463,7 +463,7 @@ public class CameraActivity extends Fragment {
         if (pictureFile != null) {
             try {
                 FileOutputStream fos = new FileOutputStream(pictureFile);
-                image.compress(Bitmap.CompressFormat.JPEG, 80, fos);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 fos.close();
                 return pictureFile;
             }
@@ -758,7 +758,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
             // Convert YuV to Jpeg
             Rect rect = new Rect(0, 0, w, h);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            yuvImage.compressToJpeg(rect, 80, outputStream);
+            yuvImage.compressToJpeg(rect, 100, outputStream);
             return outputStream.toByteArray();
         }
         return data;
