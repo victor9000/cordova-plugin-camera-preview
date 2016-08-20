@@ -343,7 +343,7 @@ public class CameraActivity extends Fragment {
 							final Bitmap pic = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
 							//scale down
-							float scale = (float)pictureView.getWidth()/(float)pic.getWidth();
+							float scale = 1; //(float)pictureView.getWidth()/(float)pic.getWidth();
 							Bitmap scaledBitmap = Bitmap.createScaledBitmap(pic, (int)(pic.getWidth()*scale), (int)(pic.getHeight()*scale), false);
 
 							final Matrix matrix = new Matrix();
@@ -463,7 +463,7 @@ public class CameraActivity extends Fragment {
         if (pictureFile != null) {
             try {
                 FileOutputStream fos = new FileOutputStream(pictureFile);
-                image.compress(Bitmap.CompressFormat.JPEG, 80, fos);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 fos.close();
                 return pictureFile;
             }
@@ -767,7 +767,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
             // Convert YuV to Jpeg
             Rect rect = new Rect(0, 0, w, h);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            yuvImage.compressToJpeg(rect, 80, outputStream);
+            yuvImage.compressToJpeg(rect, 100, outputStream);
             return outputStream.toByteArray();
         }
         return data;
