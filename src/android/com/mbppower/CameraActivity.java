@@ -343,7 +343,7 @@ public class CameraActivity extends Fragment {
 							final Bitmap pic = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
 							//scale down
-							float scale = 1; //(float)pictureView.getWidth()/(float)pic.getWidth();
+							float scale = (float)pictureView.getWidth()/(float)pic.getWidth();
 							Bitmap scaledBitmap = Bitmap.createScaledBitmap(pic, (int)(pic.getWidth()*scale), (int)(pic.getHeight()*scale), false);
 
 							final Matrix matrix = new Matrix();
