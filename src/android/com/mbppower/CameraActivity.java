@@ -542,6 +542,9 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
             setCameraDisplayOrientation();
             //mCamera.getParameters().setRotation(getDisplayOrientation());
             //requestLayout();
+            Camera.Parameters params = mCamera.getParameters();
+						params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+						mCamera.setParameters(params);
         }
     }
 
@@ -717,6 +720,12 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
         }
 
         // Cannot find the one match the aspect ratio, ignore the requirement
+        optimalSize = sizes.get(0);
+				for(int i=0;i {
+					if(sizes.get(i).width > optimalSize.width) {
+						optimalSize = sizes.get(i);
+					}
+				}
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
             for (Camera.Size size : sizes) {
