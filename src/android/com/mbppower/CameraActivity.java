@@ -730,7 +730,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
           for (Camera.Size size : sizes) {
             if (Math.abs(size.height - targetHeight) < minDiff) {
               optimalSize = size;
-              optimalSize.height = optimalSize.width;	// try to set to 1:1 if cannot find matched aspect ratio
               minDiff = Math.abs(size.height - targetHeight);
             }
           }
