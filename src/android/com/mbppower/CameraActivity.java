@@ -721,13 +721,19 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 
         // Cannot find the one match the aspect ratio, ignore the requirement
         if (optimalSize == null) {
-            minDiff = Double.MAX_VALUE;
-            for (Camera.Size size : sizes) {
-                if (Math.abs(size.height - targetHeight) < minDiff) {
-                    optimalSize = size;
-                    minDiff = Math.abs(size.height - targetHeight);
-                }
+     //    	optimalSize = sizes.get(0);
+					// for(int i=0;i<sizes.size();i++) {
+					// 	if(sizes.get(i).width > optimalSize.width)
+					// 		optimalSize = sizes.get(i);
+					// }
+          minDiff = Double.MAX_VALUE;
+          for (Camera.Size size : sizes) {
+            if (Math.abs(size.height - targetHeight) < minDiff) {
+              optimalSize = size;
+              optimalSize.height = optimalSize.width;	// try to set to 1:1 if cannot find matched aspect ratio
+              minDiff = Math.abs(size.height - targetHeight);
             }
+          }
         }
 
         Log.d(TAG, "optimal preview size: w: " + optimalSize.width + " h: " + optimalSize.height);
