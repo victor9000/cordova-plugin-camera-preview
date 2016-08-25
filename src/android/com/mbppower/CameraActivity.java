@@ -711,6 +711,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 
         // Try to find an size match aspect ratio and size
         for (Camera.Size size : sizes) {
+        	Log.d(TAG, "size: [" + size.height + " - " + size.width + "]");
             double ratio = (double) size.width / size.height;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;
             if (Math.abs(size.height - targetHeight) < minDiff) {
